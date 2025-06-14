@@ -9,6 +9,7 @@ A Spring Boot application that aggregates odds from multiple sources and provide
 - **Server-Sent Events**: Real-time streaming of odds updates
 - **Thread-Safe**: Uses concurrent data structures for thread safety
 - **Mock Data Sources**: Built-in mock endpoints for testing
+- **Health Monitoring**: Health check endpoint with system status
 
 ## Getting Started
 
@@ -31,3 +32,14 @@ A Spring Boot application that aggregates odds from multiple sources and provide
 - **MockSourceController**: Mock data source endpoints
 - **ConcurrentHashMap**: Thread-safe storage for current odds
 - **SSE**: Real-time communication with clients
+
+## Configuration
+
+Configuration can be modified in `application.yml`:
+
+- `app.odds.poll-interval`: Polling interval in milliseconds (default: 5000)
+- `app.odds.mock-sources`: List of mock source URLs
+
+## Testing
+
+Run tests with: mvn test
