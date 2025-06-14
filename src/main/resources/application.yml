@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: odds-aggregator
+
+logging:
+  level:
+    com.example.oddsaggregator: DEBUG
+    org.springframework.scheduling: DEBUG
+
+# Custom application properties
+app:
+  odds:
+    poll-interval: 5000
+    mock-sources:
+      - http://localhost:8080/mock/source1/odds
+      - http://localhost:8080/mock/source2/odds
