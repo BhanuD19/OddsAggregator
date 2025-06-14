@@ -27,3 +27,12 @@ app:
     mock-sources:
       - http://localhost:8080/mock/source1/odds
       - http://localhost:8080/mock/source2/odds
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+  show-actuator: true
