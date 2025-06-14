@@ -24,6 +24,7 @@ class OddsAggregatorServiceTest {
     
     @BeforeEach
     void setUp() {
+        // Create test configuration using records
         var oddsProperties = new AppProperties.OddsProperties(
             1000L,
             List.of(
@@ -41,6 +42,28 @@ class OddsAggregatorServiceTest {
         List<Odds> odds = oddsAggregatorService.getCurrentOdds();
         assertNotNull(odds);
         assertTrue(odds.isEmpty());
+    }
+    
+    @Test
+    void testAddSseEmitter_ReturnsEmitter() {
+        var emitter = oddsAggregatorService.addSseEmitter();
+        assertNotNull(emitter);
+        assertEquals(1, oddsAggregatorService.getActiveSseConnections());
+    }
+    
+    @Test
+    void testGetActiveSseConnections_InitiallyZero() {
+        assertEquals(0, oddsAggregatorService.getActiveSseConnections());
+    }
+    
+    @Test
+    void testAddMultipleSseEmitters() {
+        var emitter1 = oddsAggregatorService.addSseEmitter();
+        var emitter2 = oddsAggregatorService.addSseEmitter();
+        
+        assertNotNull(emitter1);
+        assertNotNull(emitter2);
+        assertEquals(2, oddsAggregatorService.getActiveSseConnections());
     }
     
     @Test
