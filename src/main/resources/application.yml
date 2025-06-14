@@ -7,10 +7,14 @@ spring:
 
 logging:
   level:
-    com.example.oddsaggregator: DEBUG
-    org.springframework.scheduling: DEBUG
+    com.miraiedge.oddsaggregator : INFO
+    org.springframework.scheduling: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: /app/logs/odds-aggregator.log
 
-# Custom application properties
 app:
   odds:
     poll-interval: 5000
