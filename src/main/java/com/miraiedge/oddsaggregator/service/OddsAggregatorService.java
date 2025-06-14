@@ -18,7 +18,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class OddsAggregatorService {
     
@@ -28,7 +27,13 @@ public class OddsAggregatorService {
     private final ConcurrentHashMap<String, Odds> currentOdds = new ConcurrentHashMap<>();
 
     private final CopyOnWriteArrayList<SseEmitter> sseEmitters = new CopyOnWriteArrayList<>();
-    private final List<String> mockSources = appProperties.odds().mockSources();
+    private final List<String> mockSources;
+
+    public OddsAggregatorService(RestTemplate restTemplate, AppProperties appProperties) {
+        this.restTemplate = restTemplate;
+        this.appProperties = appProperties;
+        this.mockSources = List.copyOf(appProperties.odds().mockSources());
+    }
 
     @Scheduled(fixedRate = 5000)
     public void aggregateOdds() {

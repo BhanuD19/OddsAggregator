@@ -1,13 +1,19 @@
 server:
-  port: 8080
+  port: 9090
+  compression:
+    enabled: true
+    mime-types: application/json, text/html, text/plain
 
 spring:
   application:
     name: odds-aggregator
+  output:
+    ansi:
+      enabled: never
 
 logging:
   level:
-    com.miraiedge.oddsaggregator : INFO
+    com.miraiedge.oddsaggregator : DEBUG
     org.springframework.scheduling: INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

@@ -1,6 +1,9 @@
-LABEL authors="Vaibhav"
 # Multi-stage build for optimized image size
 FROM eclipse-temurin:24-jdk-alpine AS builder
+
+LABEL authors="Vaibhav"
+LABEL description="OddsAggregator Application"
+LABEL version="0.0.1-SNAPSHOT"
 
 # Set working directory
 WORKDIR /app
